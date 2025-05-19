@@ -8,7 +8,7 @@
 #include <string>
 #include <cstdlib>
 #include <sstream>
-
+#include <algorithm>
 
 
 class SortIP
