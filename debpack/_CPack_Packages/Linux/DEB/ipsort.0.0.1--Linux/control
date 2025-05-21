@@ -1,0 +1,9 @@
+Architecture: amd64
+Description: ipsort built using CMake
+Maintainer: example@example.com
+Package: ipsort.0.0.1
+Priority: optional
+Section: devel
+Version: 0.0.1
+Installed-Size: 4
+
