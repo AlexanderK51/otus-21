@@ -9,6 +9,9 @@ add_executable(
     ipsort.hpp
 )
 set_target_properties(ipsort PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
+target_include_directories(ipsort
+    PRIVATE "${CMAKE_BINARY_DIR}"
+)
 
 install(TARGETS ipsort RUNTIME DESTINATION bin)
 
