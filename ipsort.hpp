@@ -62,8 +62,9 @@ inline void SortIP::list1()
     for (auto ip : v_ip4)
     {
         std::stringstream ipS;
-        for(short byte = 24; byte >= 0; byte -= 8){
-            ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");    
+        for(short byte = 24; byte >= 0; byte -= 8)
+        {
+            ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
         }
         std::cout << ipS.str() << std::endl;
     }
@@ -73,14 +74,20 @@ inline void SortIP::list2()
 {
     for (auto ip : v_ip4)
     {
-        std::stringstream ipS1;
-        short byte1;
-        ipS1 << ((ip >> byte1) & 0xff);
-        if ((ipS1.str() == "1")){
-            std::stringstream ipS;
-            for(short byte = 24; byte >= 0; byte -= 8){
-                ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
-            }
+        std::stringstream ipS;
+        uint8_t t;
+        bool needprint{false};
+        for(short byte = 24; byte >= 0; byte -= 8)
+        {
+            ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
+            t = (ip >> byte) & 0xff;
+            if (t == 1)
+            {
+                needprint = true;
+            }   
+        }
+        if (needprint == true)
+        {
             std::cout << ipS.str() << std::endl;
         }
     }
@@ -90,31 +97,25 @@ inline void SortIP::list3()
 {
     for (auto ip : v_ip4)
     {
-        bool yesornot{false};
-        for (short byte2 = 24; byte2 >= 16; byte2 -= 8)
+        std::stringstream ipS;
+        uint8_t t;
+        bool needprint1{false};
+        bool needprint2{false};
+        for(short byte = 24; byte >= 0; byte -= 8)
         {
-            std::stringstream ipS1;
-            ipS1 << ((ip >> byte2) & 0xff);
-            if ((ipS1.str() != "46")&&(byte2 == 24))
+            ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
+            t = (ip >> byte) & 0xff;
+            if ((t == 46)&&(byte == 24))
             {
-                byte2 = 0;
-                yesornot = false;
-                break;
+                needprint1 = true;
             }
-            if ((ipS1.str() != "70")&&(byte2 == 16))
+            if ((t == 70)&&(byte == 16))
             {
-                byte2 = 0;
-                yesornot = false;
-                break;
-            }
-            yesornot = true;
+                needprint2 = true;
+            }   
         }
-        if (yesornot == true)
+        if ((needprint1 == true)&&(needprint2 == true))
         {
-            std::stringstream ipS;
-            for(short byte = 24; byte >= 0; byte -= 8){
-                ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");    
-            }
             std::cout << ipS.str() << std::endl;
         }
     }
@@ -125,17 +126,18 @@ inline void SortIP::list4()
     for (auto ip : v_ip4)
     {
         std::stringstream ipS;
-        bool yesornot{false};
-        for(short byte = 24; byte >= 0; byte -= 8){
+        uint8_t t;
+        bool needprint{false};
+        for(short byte = 24; byte >= 0; byte -= 8)
+        {
             ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
-            std::stringstream ipS1;
-            ipS1 << ((ip >> byte) & 0xff);
-            if(ipS1.str() == "46")
+            t = (ip >> byte) & 0xff;
+            if (t == 46)
             {
-                yesornot = true;
-            }    
+                needprint = true;
+            }   
         }
-        if (yesornot == true)
+        if (needprint == true)
         {
             std::cout << ipS.str() << std::endl;
         }
