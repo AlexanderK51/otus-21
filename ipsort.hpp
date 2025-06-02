@@ -81,7 +81,7 @@ inline void SortIP::list2()
         {
             ipS << ((ip >> byte) & 0xff) << ((byte > 0) ? "." : "");
             t = (ip >> byte) & 0xff;
-            if (t == 1)
+            if ((t == 1)&&(byte == 24))
             {
                 needprint = true;
             }   
