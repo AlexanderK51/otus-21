@@ -35,7 +35,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          permissions: read-all
+          permissions: write-all
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ipsort-0.0.${{ github.run_number }}-Linux.deb
           asset_name: ipsort-0.0.${{ github.run_number }}-Linux.deb
