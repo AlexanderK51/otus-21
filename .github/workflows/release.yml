@@ -15,6 +15,7 @@ jobs:
         with:
           submodules: true
       - run: sudo apt-get update && sudo apt-get install libc++-dev -y
+      - run: mkdir ipsort-0.0.${{ github.run_number }}-Linux.deb
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build .
       - run: cmake --build . --target package
